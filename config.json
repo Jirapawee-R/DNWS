@@ -29,6 +29,24 @@
             "Class" : "DNWS.TwitterPlugin",
             "Preprocessing" : "false",
             "Postprocessing" :"false" 
+        },
+        {
+            "Path" : "users",
+            "Class" : "DNWS.TwitterAPIPlugin",
+            "Preprocessing" : "false",
+            "Postprocessing" :"false" 
+        },
+        {
+            "Path" : "following",
+            "Class" : "DNWS.TwitterAPIPlugin",
+            "Preprocessing" : "false",
+            "Postprocessing" :"false" 
+        },
+        {
+            "Path" : "tweets",
+            "Class" : "DNWS.TwitterAPIPlugin",
+            "Preprocessing" : "false",
+            "Postprocessing" :"false" 
         }
     ]
 }
