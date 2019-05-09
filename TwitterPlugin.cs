@@ -158,6 +158,20 @@ namespace DNWS
             timeline = timeline.OrderBy(b => b.DateCreated).ToList();
             return timeline;
         }
+
+        public List<Following> GetFollowing(){
+            if(user == null){
+                throw new Exception("User is not set");
+            }
+            using (var newContext = new TweetContext()){
+                List<Following> following = user.Following;
+                if( following == null || following.Count == 0){
+                    return null;
+                }
+                return following;
+            } 
+        }//taught by 600611001
+
         public void PostTweet(string message)
         {
             if (user == null)
@@ -285,9 +299,7 @@ namespace DNWS
             sb.Append("</form>");
             return sb;
         }
-
-
-        public HTTPResponse GetResponse(HTTPRequest request)
+        public virtual HTTPResponse GetResponse(HTTPRequest request)//taught by 600611001
         {
             HTTPResponse response = new HTTPResponse(200);
             StringBuilder sb = new StringBuilder();
