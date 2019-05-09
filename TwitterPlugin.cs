@@ -55,6 +55,20 @@ namespace DNWS
         {
             return user.Name;
         }
+        public static void RemoveUser(){
+            if (user == null)
+            {
+                throw new Exception("User is not set");
+            }
+            using(var newContext = new TweetContext){
+                list<User> userlist = newContext.Users.Where(p => p.Name.Equals(user)).ToList();
+                if(userlist.Count <= 0){
+                    throw new Exception("User not found");
+                }
+                newContext.Users.Remove(userlist[0]);
+                newContext.SaveChanges();
+            }
+        }
         public void RemoveFollowing(string followingName)
         {
             if (user == null)
