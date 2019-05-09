@@ -61,7 +61,7 @@ namespace DNWS
                 throw new Exception("User is not set");
             }
             using(var newContext = new TweetContext){
-                list<User> userlist = newContext.Users.Where(p => p.Name.Equals(user)).ToList();
+                list<User> userlist = newContext.Users.Where(b => b.Name.Equals(user)).ToList();
                 if(userlist.Count <= 0){
                     throw new Exception("User not found");
                 }
