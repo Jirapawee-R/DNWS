@@ -14,9 +14,16 @@ angular.module('followingList', ['ngRoute'])
         self.followings = response.data;
       });
       
-      self.SendFollowing = SendFollowing(followingname){
+      self.SendFollow = SendFollow(followingname)
+      { //guided by 600611001
         const data = "followingname=" + encodeURIComponent(followingname);
         $http.post('http://localhost:8080/twitterapi/following', data, requestOptions).then(function(response){ });
+      }
+
+      self.SendUnfollow = function SendUnfollow(followingname){
+        $http.defaults.headers.delete = {'X-session': $rootScope.x_session, "Content-type" : "application/json;charset=utf-8"}
+        const data = "followingname=" + encodeURIComponent(followingname);
+        $http.delete('http://localhost:8080/twitterapi/following/?' + data).then(function(response){});
       }
     }]
 });
